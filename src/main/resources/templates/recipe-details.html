@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Recipe Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="mt-5" th:text="${recipe.title}">Recipe Title</h2>
+    <p th:text="${recipe.description}">Recipe Description</p>
+    <h3>Ingredients</h3>
+    <p th:text="${recipe.ingredients}">Recipe Ingredients</p>
+    <h3>Instructions</h3>
+    <p th:text="${recipe.instructions}">Recipe Instructions</p>
+    <h3>Comments</h3>
+    <div th:each="comment : ${recipe.comments}">
+        <p><strong th:text="${comment.user.username}">User</strong> commented:</p>
+        <p th:text="${comment.content}">Comment content</p>
+    </div>
+    <form th:action="@{/comments}" method="post">
+        <input type="hidden" th:value="${recipe.id}" name="recipeId"/>
+        <div class="form-group">
+            <label for="content">Add Comment</label>
+            <textarea class="form-control" id="content" name="content" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Comment</button>
+    </form>
+</div>
+</body>
+</html>

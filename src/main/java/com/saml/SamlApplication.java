@@ -1,7 +1,9 @@
 package com.saml;
 
 import com.saml.Repository.StudentRepository;
+import com.saml.Repository.UserRepository;
 import com.saml.models.Student;
+import com.saml.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,15 +13,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SamlApplication implements CommandLineRunner {
 	@Autowired
 	private StudentRepository studentRepository;
+	@Autowired
+	private UserRepository userRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(SamlApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		Student student1 = new Student("Alice", "alice@example.com");
+		User student1 = new User( "alice@example.com");
 		Student student2 = new Student("Bob", "bob@example.com");
-		studentRepository.save(student1);
+		userRepository.save(student1);
 		studentRepository.save(student2);
 
 		studentRepository.findAll().forEach(student -> {

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Recipe Sharing Platform</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="mt-5">Recipe Sharing Platform</h2>
+    <div class="mb-3">
+        <a href="/recipes/new" class="btn btn-primary">Add New Recipe</a>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="recipe : ${recipes}">
+            <td th:text="${recipe.title}">Recipe Title</td>
+            <td th:text="${recipe.description}">Recipe Description</td>
+            <td>
+                <a th:href="@{/recipes/edit/{id}(id=${recipe.id})}" class="btn btn-warning">Edit</a>
+                <a th:href="@{/recipes/delete/{id}(id=${recipe.id})}" class="btn btn-danger">Delete</a>
+                <a th:href="@{/recipes/{id}(id=${recipe.id})}" class="btn btn-info">View</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
