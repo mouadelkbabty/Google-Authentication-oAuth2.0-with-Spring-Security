@@ -96,7 +96,7 @@ src
     │           │   ├── CommentController.java
     │           │   ├── RecipeController.java
     │           ├── model
-    │           │   ├── AppUser.java
+    │           │   ├── User.java
     │           │   ├── Comment.java
     │           │   ├── Recipe.java
     │           ├── repository
